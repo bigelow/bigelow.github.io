@@ -1,0 +1,17 @@
+baseURL = "https://bigelow.github.io/"
+locale = "en-us"
+title = "Shannon Bigelow"
+enableRobotsTXT = true
+
+# This is a text blog — no tag/category taxonomy pages.
+[taxonomies]
+
+[permalinks]
+posts = "/posts/:slug/"
+
+[outputs]
+home = ["HTML", "RSS"]
+section = ["HTML", "RSS"]
+
+[services.rss]
+limit = -1

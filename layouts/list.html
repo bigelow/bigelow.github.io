@@ -1,0 +1,28 @@
+{{ define "main" }}
+{{ if .IsHome }}
+<section class="intro">
+  <h1>Shannon Bigelow</h1>
+  <p class="bio">Automation &amp; platform engineer &mdash; build/release, CI/CD, developer productivity.</p>
+  <p class="links">
+    <a href="https://github.com/bigelow">GitHub</a> &middot;
+    <a href="https://linkedin.com/in/shannonbigelow">LinkedIn</a>
+  </p>
+</section>
+{{ else }}
+<header class="list-header">
+  <h1>{{ .Title }}</h1>
+  {{ .Content }}
+</header>
+{{ end }}
+<section class="post-list">
+  <h2>Posts</h2>
+  <ul>
+    {{ range (where site.RegularPages "Section" "posts").ByDate.Reverse }}
+    <li>
+      <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2006-01-02" }}</time>
+      <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+    </li>
+    {{ end }}
+  </ul>
+</section>
+{{ end }}
