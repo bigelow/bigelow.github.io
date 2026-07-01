@@ -31,7 +31,7 @@ the honest sentence is "I configured it but never ran it."
 ## Exemplar
 
 The published post this file was distilled from:
-kubernetes-2026 companion essay (link once live).
+kubernetes-2026 companion essay: https://bigelow.github.io/posts/kubernetes-2026/
 When in doubt, read a paragraph of it aloud and match the register:
 plain declarative sentences, dry rather than clever, claims exactly
 the size of their evidence.
