@@ -40,7 +40,7 @@ Something will get through anyway. When it does, the eval fixture is where the p
 
 ## Start smaller than feels serious
 
-You do not need an eval platform. You need one fixture file, one property check, and one CI job that runs it. Mine started as a JSON manifest and a comparison script. It found seven bugs before it had a name.
+You do not need an eval platform. You need one fixture file, one property check, and one CI job that runs it. Mine started as a JSON manifest and a comparison script. It found seven bugs before it had a name. If you want the runnable version, it lives at [bigelow/evals-in-ci](https://github.com/bigelow/evals-in-ci) — one fixture directory, two check files, one CI job, sixteen green checks.
 
 Test the agent like you test the code. The rest follows.
 
