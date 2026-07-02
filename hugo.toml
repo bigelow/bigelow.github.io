@@ -3,6 +3,9 @@ locale = "en-us"
 title = "Shannon Bigelow"
 enableRobotsTXT = true
 
+[params]
+description = "Platform engineering, verified. Notes on build/release systems, CI/CD, and what holds up when you check it."
+
 # This is a text blog — no tag/category taxonomy pages.
 [taxonomies]
 

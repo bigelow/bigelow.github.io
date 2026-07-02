@@ -4,7 +4,20 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>{{ if .IsHome }}{{ site.Title }}{{ else }}{{ .Title }} · {{ site.Title }}{{ end }}</title>
-  {{ with .Description }}<meta name="description" content="{{ . }}">{{ end }}
+  {{ $desc := .Description | default site.Params.description -}}
+  {{ with $desc }}<meta name="description" content="{{ . }}">{{ end }}
+  {{/* Open Graph / Twitter social cards */ -}}
+  {{ $ogtitle := cond .IsHome site.Title .Title -}}
+  {{ $ogimage := absURL (.Params.image | default "images/social-default.png") -}}
+  <meta property="og:title" content="{{ $ogtitle }}">
+  <meta property="og:description" content="{{ $desc }}">
+  <meta property="og:type" content="{{ if eq .Section "posts" }}article{{ else }}website{{ end }}">
+  <meta property="og:url" content="{{ .Permalink }}">
+  <meta property="og:image" content="{{ $ogimage }}">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="{{ $ogtitle }}">
+  <meta name="twitter:description" content="{{ $desc }}">
+  <meta name="twitter:image" content="{{ $ogimage }}">
   {{ range .AlternativeOutputFormats -}}
   <link rel="{{ .Rel }}" type="{{ .MediaType.Type }}" href="{{ .Permalink }}" title="{{ site.Title }}">
   {{ end -}}
