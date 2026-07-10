@@ -12,9 +12,11 @@ I want to make the case that evals belong in CI, and that this is not a research
 
 ## The bug that made this concrete for me
 
-While building a [Kubernetes reference architecture](https://github.com/bigelow/kubernetes-2026) with heavy AI assistance, I built a cross-checking workflow: split the repo into a JSON manifest of chunks, feed each chunk to a second and third model, and compare their claims against the actual source. It was tedious to set up and it found seven real bugs — issues I had read past because the generated code looked idiomatic.
+While building a [Kubernetes reference architecture](https://github.com/bigelow/kubernetes-2026) with heavy AI assistance, I built a cross-checking workflow: split the repo into a JSON manifest of chunks, feed each chunk to a second and third model, and compare their claims against the actual source. It was tedious to set up and it caught real bugs — issues I had read past because the generated code looked idiomatic. The fixes landed squashed into the repo's [baseline commit](https://github.com/bigelow/kubernetes-2026/commit/1f51044da75b9f5d3a4199f9bc9811187f687f44), which is the honest limit of what I can show you: evidence the review happened, not an itemized list of what it caught. An earlier version of this post put a number on it; I couldn't evidence the count, so the count is gone.
 
 The plainer checks earned their keep too. On the repo's first CI run, kubeconform flagged a DRA ResourceClaimTemplate with the wrong request shape — [here is the fix](https://github.com/bigelow/kubernetes-2026/commit/bbd2fb1708dae29adc1760f4e49c59aaa28bb875), if you want the receipt. Two different verifiers, same lesson: the generated output looked right, and a check that doesn't care how it looks caught it.
+
+The pattern has repeated with each verification layer added since. Testing the admission policies against a real v1.36 API server surfaced a required `spec.reinvocationPolicy` field missing from both MutatingAdmissionPolicies — [static review could not have caught it](https://github.com/bigelow/kubernetes-2026/commit/b7a091354e2616ce7d96d433f02874b9b111e7a5), because the field only fails server-side. Static IaC scanning found a DRA inference-worker Pod with [no securityContext at all](https://github.com/bigelow/kubernetes-2026/commit/6e8c96ea897e6e8a7afaff0f0963ac7283079afb) — a workload prior sessions had missed, and I had too.
 
 That workflow is an eval. It has inputs, expected properties, and a pass/fail signal. Once I saw it that way, the next step was obvious: it should not be something I run by hand when I remember to. It should run when the thing it checks changes.
 
@@ -40,7 +42,7 @@ Something will get through anyway. When it does, the eval fixture is where the p
 
 ## Start smaller than feels serious
 
-You do not need an eval platform. You need one fixture file, one property check, and one CI job that runs it. Mine started as a JSON manifest and a comparison script. It found seven bugs before it had a name. If you want the runnable version, it lives at [bigelow/evals-in-ci](https://github.com/bigelow/evals-in-ci) — one fixture directory, two check files, one CI job, sixteen green checks.
+You do not need an eval platform. You need one fixture file, one property check, and one CI job that runs it. Mine started as a JSON manifest and a comparison script. It was finding real bugs before it had a name. If you want the runnable version, it lives at [bigelow/evals-in-ci](https://github.com/bigelow/evals-in-ci) — one fixture directory, two check files, one CI job, sixteen green checks.
 
 Test the agent like you test the code. The rest follows.
 
