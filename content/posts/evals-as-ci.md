@@ -46,3 +46,7 @@ You do not need an eval platform. You need one fixture file, one property check,
 
 Test the agent like you test the code. The rest follows.
 
+---
+
+*Updated July 10, 2026: the original version of this post claimed a specific bug count I couldn't trace to public evidence. I removed it; the examples that remain each link to their commit.*
+
