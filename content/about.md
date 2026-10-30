@@ -1,15 +1,9 @@
----
-title: "About"
----
+# About
 
-I'm Shannon Bigelow, an automation and platform engineer. My work centers
-on build/release systems, CI/CD, and developer productivity — the plumbing
-that lets other engineers ship without fighting their tools.
+I’m Shannon Bigelow, a senior platform engineer. I treat build and release systems as production and the developers who use them as my customers.
 
-This site is where I write about that work: platform decisions, the
-reasoning behind them, and what actually holds up when you verify it rather
-than assume it. Posts are plain, first-person, and claim exactly as much as
-the evidence supports.
+My work has centered on shared build fleets, CI/CD platforms, observability, and the automation that lets product teams ship without fighting their tools. I’ve done this at Adobe, Apple, and earlier at Cisco/WebEx and Nexenta.
 
-You can find me on [GitHub](https://github.com/bigelow) and
-[LinkedIn](https://linkedin.com/in/shannonbigelow).
+This site is where I write about that work: platform decisions, the reasoning behind them, and what holds up when you verify it rather than assume it. Posts are plain, first-person, and claim only as much as the evidence supports.
+
+[GitHub](https://github.com/bigelow) · [LinkedIn](https://linkedin.com/in/shannonbigelow) · [X](https://x.com/sbigelow)
