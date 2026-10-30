@@ -6,4 +6,4 @@ My work has centered on shared build fleets, CI/CD platforms, observability, and
 
 This site is where I write about that work: platform decisions, the reasoning behind them, and what holds up when you verify it rather than assume it. Posts are plain, first-person, and claim only as much as the evidence supports.
 
-[GitHub](https://github.com/bigelow) · [LinkedIn](https://linkedin.com/in/shannonbigelow) · [X](https://x.com/sbigelow)
+[GitHub](https://github.com/bigelow) · [LinkedIn](https://linkedin.com/in/shannonbigelow) · [X](https://x.com/sbigelow92)
